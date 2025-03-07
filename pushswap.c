@@ -1,30 +1,52 @@
 #include "pswap.h"
 
-int ft_len(char *str)
-{
-    int t = 0;
-
-    while(str[t])
-        t++;
-    return t;
-}
-void initstack(int ac, char **av, s_list **stack_a)
+int initstack(int ac, char **av, s_list **stack_a)
 {
     int i;
     int t = 1;
 
-    while(av[t])
+    while(ac > t)
     {
         i = 0;
         while(av[t][i])
         {
-            ft_lstadback(&*stack_a, ft_lstnew(ft_atoi(av[t], &i)));
+            if(!ft_lstadback(&*stack_a, ft_lstnew(ft_atoi(av[t], &i))))
+                {
+                    lstclear(&*stack_a);
+                    return 0;
+                }
         }
         t++;
     }    
+    return 1;
     // }
     
     
+}
+int lmerda(int ac, char **av)
+{
+    int t;
+    int p;
+
+    t = 1;
+    if(ac == 1)
+        return 0;
+    while(t < ac)
+    {
+        p = 0;
+        if(!av[t] || !*av[t])
+            return 0;
+        while(av[t][p])
+        {
+            if(av[t][p] != ' ' && av[t][p] != '+' && av[t][p] != '-' && (!(av[t][p] >= '0' && av[t][p] <= '9')))
+                return 0;
+            if((av[t][p] == '+' || av[t][p] == '-') && !(av[t][p + 1] >= '0' && av[t][p + 1] <= '9'))
+                return 0;
+            p++;
+        }
+        t++;
+    }
+    return 1;
 }
 int main(int ac, char **av)
 {
@@ -34,9 +56,10 @@ int main(int ac, char **av)
     stack_a = NULL;
     stack_b = NULL;
 
-    if (ac == 1)
-        return (0);
-    initstack(ac, av, &stack_a);
+    if (!lmerda(ac, av))
+        return 0;
+    if(!initstack(ac, av, &stack_a))
+        return 0;
     while (stack_a)
     {
         printf("   %d \n", stack_a->value);

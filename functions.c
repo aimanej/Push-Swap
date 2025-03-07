@@ -37,17 +37,39 @@ s_list *ft_lstnew(int val)
 	return new;
 }
 
-void ft_lstadback(s_list **lst, s_list *new)
+int ft_lstadback(s_list **lst, s_list *new)
 {
 	s_list *ind;
 
+	ind = *lst;
 	if(!*lst)
+	{
 		*lst = new;
-	else
-		{
-			ind = ft_lstlast(*lst);
-			ind->next = new;
-		}
+		return 1;
+	}
+	while(ind->next)
+	{
+		if(ind->value == new->value)
+			return 0;
+		// if(ind->next == NULL)
+		// 	break;
+		ind = ind->next;
+	}
+	ind->next = new;
+	return 1;
+}
+void lstclear(s_list **stack)
+{
+	s_list *t;
+
+	t = *stack;
+	while(t)
+	{
+		t = t->next;
+		free(*stack);
+		*stack = t;
+	}
+	// *stack = NULL;
 }
 
 s_list *ft_lstlast(s_list *lst)
