@@ -60,9 +60,23 @@ int main(int ac, char **av)
         return 0;
     if(!initstack(ac, av, &stack_a))
         return 0;
-    while (stack_a)
+    // while (stack_a)
+    // {
+    //     printf("%d\n", stack_a->value);
+    //     stack_a = stack_a->next;
+    // }
+    // sa(&stack_a);
+    rotate(&stack_a);
+    while(stack_a)
     {
-        printf("   %d \n", stack_a->value);
+        printf("%d\n", stack_a->value);
         stack_a = stack_a->next;
     }
+    // push(&stack_a, &stack_b);
+    // while(stack_b)
+    // {
+    //     printf("   %d\n", stack_b->value);
+    //     stack_b = stack_b->next;
+    // }
+    return 0;
 }

@@ -47,12 +47,12 @@ int ft_lstadback(s_list **lst, s_list *new)
 		*lst = new;
 		return 1;
 	}
-	while(ind->next)
+	while(ind)
 	{
 		if(ind->value == new->value)
 			return 0;
-		// if(ind->next == NULL)
-		// 	break;
+		if(ind->next == NULL)
+		 	break;
 		ind = ind->next;
 	}
 	ind->next = new;
@@ -72,14 +72,15 @@ void lstclear(s_list **stack)
 	// *stack = NULL;
 }
 
-s_list *ft_lstlast(s_list *lst)
+s_list *ft_lstlast(s_list **lst)
 {
 	s_list *t;
 
-	if(!lst)
-		return lst;
-	while(lst->next)
-		lst = lst->next;
-	t = lst;
+	t = *lst;
+
+	if(!t)
+		return t;
+	while(t->next)
+		t = t->next;
 	return t;
 }
