@@ -22,5 +22,6 @@ void lstclear(s_list **stack);
 void sa(s_list **stack);
 void push(s_list **stack_a, s_list **stack_b);
 void rotate(s_list **stack);
+void reverse_rotate(s_list **stack);
 
 # endif
