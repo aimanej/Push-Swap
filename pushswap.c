@@ -67,6 +67,7 @@ int main(int ac, char **av)
     // }
     // sa(&stack_a);
     rotate(&stack_a);
+    // printf("%d\n", ft_lstlast(&stack_a)->value);
     while(stack_a)
     {
         printf("%d\n", stack_a->value);

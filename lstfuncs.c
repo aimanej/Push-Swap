@@ -49,10 +49,13 @@ void rotate(s_list **stack)
     temp_first = *stack;
     temp_last = ft_lstlast(stack);
 
-    temp_last->next = (*stack)->next;
+    
     temp_third = *stack;
-    while(temp_third->next->next)
+    while(temp_third->next != temp_last)
         temp_third = temp_third->next;
+
+    temp_last->next = temp_first->next;
+
     temp_third->next = temp_first;
     temp_first->next = NULL;
     *stack = temp_last;
