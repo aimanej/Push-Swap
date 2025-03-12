@@ -1,6 +1,6 @@
 #include "pswap.h"
 
-void sa(s_list **stack)
+void swap(s_list **stack)
 {
     if(!*stack || !(*stack)->next)
         return;

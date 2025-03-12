@@ -60,17 +60,12 @@ int main(int ac, char **av)
         return 0;
     if(!initstack(ac, av, &stack_a))
         return 0;
-    // while (stack_a)
-    // {
-    //     printf("%d\n", stack_a->value);
-    //     stack_a = stack_a->next;
-    // }
-    // sa(&stack_a);
-    reverse_rotate(&stack_a);
-    // printf("%d\n", ft_lstlast(&stack_a)->value);
+    index_sorted_stack(&stack_a);
+    printf("length of list is : %d\n", lstsize(stack_a));
+    push_swap(&stack_a, &stack_b);
     while(stack_a)
     {
-        printf("%d\n", stack_a->value);
+        printf("final stack ---->%d\n", stack_a->value);
         stack_a = stack_a->next;
     }
     // push(&stack_a, &stack_b);

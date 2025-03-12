@@ -33,6 +33,7 @@ s_list *ft_lstnew(int val)
 	if (!new)
 		return NULL;
 	new->value = val;
+	new->index = 0;
 	new->next = NULL;
 	return new;
 }
